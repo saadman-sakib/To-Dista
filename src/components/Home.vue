@@ -114,7 +114,7 @@
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-icon color="primary">mdi-check-box-multiple-outline</v-icon>
+      <img style="margin-right:10px" src="@/assets/icon.png" height="25px" />
       <v-toolbar-title> To-Dista </v-toolbar-title>
     </v-app-bar>
     <br />
@@ -134,24 +134,26 @@
       <v-card
         v-for="([title, , n], i) in cruds"
         :key="i"
-        elevation="20"
+        elevation="7"
         outlined
         shaped
         class="card"
+        color=""
       >
         <v-list-item three-line>
           <v-list-item-content>
             <v-list-item-title class="headline mb-1">
-              <v-icon color="yellow" left>mdi-chevron-right-box</v-icon>
+              <v-icon v-if="i % 3 == 0" color="success" left>mdi-check-circle</v-icon>
+              <v-icon v-else color="orange" left>mdi-alert</v-icon>
               {{ title }}
-              <v-chip v-if="i % 3 == 0" class="ma-2" color="success" outlined>
+              <!-- <v-chip v-if="i % 3 == 0" class="ma-2" color="success" outlined>
                 <v-icon left> mdi-check </v-icon>
                 Done
               </v-chip>
               <v-chip v-else class="ma-2" color="error" outlined>
                 <v-icon left> mdi-alert-circle </v-icon>
                 Due
-              </v-chip>
+              </v-chip> -->
             </v-list-item-title>
             <v-list-item-subtitle
               >Greyhound divisely hello coldly
@@ -163,7 +165,7 @@
         <br />
         <div class="justify">
           <v-card-actions>
-            <v-btn outlined color="primary" @click="dialog = true">
+            <v-btn text color="primary" @click="dialog = true">
               Detail
             </v-btn>
           </v-card-actions>
@@ -286,8 +288,8 @@ export default {
 <style scoped>
 .card {
   margin: 30px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 20px;
   max-width: 700px;
   /* min-width: 400px; */
@@ -314,8 +316,8 @@ export default {
   border-radius: 5px;
 }
 .add {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   max-width: 700px;
   /* min-width: 400px; */
 }
