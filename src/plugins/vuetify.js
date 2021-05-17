@@ -17,6 +17,7 @@ const vuetify = new Vuetify({
             },
             dark: {
                 primary: colors.blue.lighten3,
+                success: '#55e063'
             },
         },
     },

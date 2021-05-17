@@ -168,10 +168,22 @@
             <v-btn text color="primary" @click="dialog = true">
               Detail
             </v-btn>
+            <v-btn v-if="i%3==0" text color="success" @click="dialog = true">
+              MarkDone
+            </v-btn>
+            <v-btn v-else text color="orange" @click="dialog = true">
+              MarkUndone
+            </v-btn>
           </v-card-actions>
-          <v-chip outlined>
-            <div v-for="x in n" :key="x">
-              <v-avatar size="20" class="avatar">
+          <div>
+              <v-avatar
+                style="background: #336699; padding-right:4px;"
+                size="25"
+                class="avatar"
+              >
+              <v-icon>mdi-dots-vertical</v-icon>
+              </v-avatar>
+              <v-avatar  v-for="x in 3" :key="x" size="25" class="avatar">
                 <img
                   :src="
                     `https://randomuser.me/api/portraits/women/` +
@@ -182,8 +194,7 @@
                   alt="John"
                 />
               </v-avatar>
-            </div>
-          </v-chip>
+          </div>
         </div>
       </v-card>
     </div>
@@ -297,6 +308,8 @@ export default {
 
 .avatar {
   border: solid 2px;
+  margin-top:15px ;
+  margin-left:-10px ;
 }
 
 .justify {
