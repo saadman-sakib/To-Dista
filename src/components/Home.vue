@@ -15,13 +15,13 @@
       <v-list nav dense>
         <v-list-item-group v-model="selectedItem" color="primary">
           <v-text-field
-          placeholder="Search"
-          :append-icon="'mdi-magnify'"
-          @click:append="dialog = true"
-          filled
-          rounded
-          dense
-        ></v-text-field>
+            placeholder="Search"
+            :append-icon="'mdi-magnify'"
+            @click:append="dialog = true"
+            filled
+            rounded
+            dense
+          ></v-text-field>
           <v-list-item v-for="(item, i) in items" :key="i">
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
@@ -39,15 +39,15 @@
             <v-tab>Tags</v-tab>
             <v-tab-item>
               <v-list-item-group class="tab-itm" no-action sub-group>
-                <v-list-item v-for="([title,], i) in cruds" :key="i" link>
+                <v-list-item v-for="([title], i) in cruds" :key="i" link>
                   <v-list-item-icon>
-                    <v-icon >mdi-format-list-bulleted</v-icon>
+                    <v-icon>mdi-format-list-bulleted</v-icon>
                   </v-list-item-icon>
                   <v-list-item-title v-text="title"></v-list-item-title>
                 </v-list-item>
                 <v-list-item link>
                   <v-list-item-icon>
-                    <v-icon >mdi-plus-box-multiple</v-icon>
+                    <v-icon>mdi-plus-box-multiple</v-icon>
                   </v-list-item-icon>
                   <v-list-item-title>Add Catagory</v-list-item-title>
                 </v-list-item>
@@ -56,15 +56,15 @@
 
             <v-tab-item>
               <v-list-item-group class="tab-itm" no-action sub-group>
-                <v-list-item v-for="([title,], i) in admins" :key="i" link>
+                <v-list-item v-for="([title], i) in admins" :key="i" link>
                   <v-list-item-icon>
-                    <v-icon >mdi-tag</v-icon>
+                    <v-icon>mdi-tag</v-icon>
                   </v-list-item-icon>
                   <v-list-item-title v-text="title"></v-list-item-title>
                 </v-list-item>
                 <v-list-item link>
                   <v-list-item-icon>
-                    <v-icon >mdi-plus-box-multiple</v-icon>
+                    <v-icon>mdi-plus-box-multiple</v-icon>
                   </v-list-item-icon>
                   <v-list-item-title>Add Tag</v-list-item-title>
                 </v-list-item>
@@ -114,7 +114,7 @@
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <img style="margin-right:10px" src="@/assets/icon.png" height="25px" />
+      <img style="margin-right: 10px" src="@/assets/icon.png" height="25px" />
       <v-toolbar-title> To-Dista </v-toolbar-title>
     </v-app-bar>
     <br />
@@ -132,7 +132,7 @@
     </div>
     <div class="card-holder">
       <v-card
-        v-for="([title, , n], i) in cruds"
+        v-for="([title], i) in cruds"
         :key="i"
         elevation="7"
         outlined
@@ -143,17 +143,11 @@
         <v-list-item three-line>
           <v-list-item-content>
             <v-list-item-title class="headline mb-1">
-              <v-icon v-if="i % 3 == 0" color="success" left>mdi-check-circle</v-icon>
+              <v-icon v-if="i % 3 == 0" color="success" left
+                >mdi-check-circle</v-icon
+              >
               <v-icon v-else color="orange" left>mdi-alert</v-icon>
               {{ title }}
-              <!-- <v-chip v-if="i % 3 == 0" class="ma-2" color="success" outlined>
-                <v-icon left> mdi-check </v-icon>
-                Done
-              </v-chip>
-              <v-chip v-else class="ma-2" color="error" outlined>
-                <v-icon left> mdi-alert-circle </v-icon>
-                Due
-              </v-chip> -->
             </v-list-item-title>
             <v-list-item-subtitle
               >Greyhound divisely hello coldly
@@ -165,10 +159,13 @@
         <br />
         <div class="justify">
           <v-card-actions>
-            <v-btn text color="primary" @click="dialog = true">
-              Detail
-            </v-btn>
-            <v-btn v-if="i%3==0" text color="success" @click="dialog = true">
+            <v-btn text color="primary" @click="dialog = true"> Detail </v-btn>
+            <v-btn
+              v-if="i % 3 == 0"
+              text
+              color="success"
+              @click="dialog = true"
+            >
               MarkDone
             </v-btn>
             <v-btn v-else text color="orange" @click="dialog = true">
@@ -176,34 +173,40 @@
             </v-btn>
           </v-card-actions>
           <div>
-              <v-avatar
-                style="background: #336699; padding-right:4px;"
-                size="25"
-                class="avatar"
-              >
+            <v-avatar
+              style="background: #336699; padding-right: 4px"
+              size="25"
+              class="avatar"
+            >
               <v-icon>mdi-dots-vertical</v-icon>
-              </v-avatar>
-              <v-avatar  v-for="x in 3" :key="x" size="25" class="avatar">
-                <img
-                  :src="
-                    `https://randomuser.me/api/portraits/women/` +
-                    x +
-                    i +
-                    `.jpg`
-                  "
-                  alt="John"
-                />
-              </v-avatar>
+            </v-avatar>
+            <v-avatar v-for="x in 3" :key="x" size="25" class="avatar">
+              <img
+                :src="
+                  `https://randomuser.me/api/portraits/women/` + x + i + `.jpg`
+                "
+                alt="John"
+              />
+            </v-avatar>
           </div>
         </div>
       </v-card>
     </div>
     <v-row justify="center">
       <v-dialog v-model="dialog" width="600px">
-        <v-card>
-          <v-card-title>
-            <span class="headline">Use Google's location service?</span>
-          </v-card-title>
+        <v-card outlined class="modal">
+          <v-list-item three-line>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">
+                <v-icon v-if="i % 3 == 0" color="success" left
+                  >mdi-check-circle</v-icon
+                >
+                <v-icon v-else color="orange" left>mdi-alert</v-icon>
+                Title Title
+              </v-list-item-title>
+              <hr />
+            </v-list-item-content>
+          </v-list-item>
           <v-card-text>
             Lorem ipsum dolor sit amet, semper quis, sapien id natoque elit.
             Nostra urna at, magna at neque sed sed ante imperdiet, dolor mauris
@@ -223,15 +226,43 @@
             a. Enim tempor at, rutrum elit condimentum, amet rutrum vitae tempor
             torquent nunc. Praesent vestibulum integer maxime felis.
           </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">
-              Disagree
-            </v-btn>
-            <v-btn color="green darken-1" text @click="dialog = false">
-              Agree
-            </v-btn>
-          </v-card-actions>
+          <br />
+          
+          <div class="justify">
+            <v-card-actions>
+              <v-btn text color="primary" @click="dialog = false">
+                Close
+              </v-btn>
+              <v-btn
+                v-if="i % 3 == 0"
+                text
+                color="success"
+                @click="dialog = false"
+              >
+                MarkDone
+              </v-btn>
+              <v-btn v-else text color="orange" @click="dialog = false">
+                MarkUndone
+              </v-btn>
+            </v-card-actions>
+            <div>
+              <v-avatar
+                style="background: #336699; padding-right: 4px"
+                size="25"
+                class="avatar"
+              >
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-avatar>
+              <v-avatar v-for="x in 3" :key="x" size="25" class="avatar">
+                <img
+                  :src="
+                    `https://randomuser.me/api/portraits/women/` + x + `.jpg`
+                  "
+                  alt="John"
+                />
+              </v-avatar>
+            </div>
+          </div>
         </v-card>
       </v-dialog>
     </v-row>
@@ -291,6 +322,16 @@ export default {
       ],
       dialog: false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      labels: [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      value: [200, 675, 410, 390, 310, 460, 250],
     };
   },
 };
@@ -303,13 +344,16 @@ export default {
   margin-right: 5%;
   padding: 20px;
   max-width: 700px;
-  /* min-width: 400px; */
+}
+
+.modal {
+  padding: 20px;
 }
 
 .avatar {
   border: solid 2px;
-  margin-top:15px ;
-  margin-left:-10px ;
+  margin-top: 15px;
+  margin-left: -10px;
 }
 
 .justify {
